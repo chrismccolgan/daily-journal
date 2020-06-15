@@ -1,7 +1,14 @@
-const renderJournalEntries = () => {
-    for (const currentJournalEntry of journalEntry) {
-        const journalHTML = makeJournalEntryComponent(currentJournalEntry)
-        const journalArticleElement = document.querySelector(".entryLog")
-        journalArticleElement.innerHTML += journalHTML
+import makeJournalEntryComponent from "./entryComponent.js"
+
+const renderJournalEntries = {
+    renderEntries (entries) {
+        let entry = []
+        for (entry of entries) {
+            const journalHTML = makeJournalEntryComponent.journalHTMLRepresentation(entry)
+            const journalArticleElement = document.querySelector(".entryLog")
+            journalArticleElement.innerHTML += journalHTML
+        }
     }
 }
+
+export default renderJournalEntries
