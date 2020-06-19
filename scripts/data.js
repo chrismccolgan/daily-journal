@@ -10,7 +10,8 @@ const API = {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newEntryObject)
-        }).then(response => response.json())
+        })
+            .then(response => response.json())
     },
     // deleteJournalEntry: () => {
 
