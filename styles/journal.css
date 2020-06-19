@@ -1,9 +1,15 @@
-.journal {
-    display: flex;
-    flex-direction: column;
+* {
+    font-family: sans-serif;
 }
 
 .journal__container {
     border: 1px black solid;
     margin: 1em 0 1em 0;
+    position: relative;
+}
+
+.button-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
