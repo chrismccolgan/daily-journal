@@ -8,7 +8,7 @@
     position: relative;
 }
 
-.button-delete {
+.button__container {
     position: absolute;
     top: 0;
     right: 0;

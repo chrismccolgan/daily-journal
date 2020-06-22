@@ -7,7 +7,10 @@ const makeJournalEntryComponent = (journalEntry) => {
                 <li>Mood: ${journalEntry.mood}</li>
                 <li>${journalEntry.entry}</li>
             </ul>
-            <button class="button-delete" id="deleteJournalEntry--${journalEntry.id}" type="button">Delete</button>
+            <div class="button__container">
+                <button class="button__container--edit" id="editJournalEntry--${journalEntry.id}" type="button">Edit</button>
+                <button class="button__container--delete" id="deleteJournalEntry--${journalEntry.id}" type="button">Delete</button>
+            </div>
         </div>`
     return string
 }

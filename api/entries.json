@@ -4,14 +4,14 @@
       "date": "2020-05-22",
       "concepts": "First Week Completed",
       "mood": "💪 Accomplished",
-      "entry": "We just finished our first week of class. I was nervous at first about doing it all remotely, but I'm kind of loving it. I'm never late, there's no traffic, and I can fold laundry/workout/make a sandwich during the lunch hour. Working from home is godly.",
+      "entry": "We just finished our first week of class. I was nervous at first about doing it all remotely, but I love it. No traffic!",
       "id": 1
     },
     {
       "date": "2020-05-28",
       "concepts": "Group Project, Git",
       "mood": "😀 Happy",
-      "entry": "Today my group presented the website we were working on. My group was awesome. I learned a lot about Git with this project. I noticed that I'm referencing my notes less and less. I need to practice public speaking. Even on a computer it was pretty challenging for me. Thankfully the programming world seems to be pretty forgiving about awkward personalities.",
+      "entry": "Today my group presented the website we were working on. My group was awesome. I learned a lot about Git with this project.",
       "id": 2
     },
     {
@@ -25,21 +25,21 @@
       "date": "2020-06-02",
       "concepts": "Automating Site Content with JavaScript",
       "mood": "😁 Excited",
-      "entry": "Today we learned the basics of how to automate site content generation with Javascript instead of hardcoding it in HTML. I am excited to learn more about this, I can see how this could be applied to many realworld applications. Class seems to be getting harder! Need to brush up on loops in Javascript.",
+      "entry": "Today we learned the basics of how to automate site content generation with Javascript instead of hardcoding it in HTML. I am excited to learn more about this!",
       "id": 4
     },
     {
       "date": "2020-06-05",
       "concepts": "Third Week Completed: JSON, Generating content from javascript, Postman",
       "mood": "💀 Burned out",
-      "entry": "This week we learned a lot! I got the gist of everything at least. I'm not sure how the Javascript functions for pulling data from JSON works. I can get it working though. Need to read up on it. Brain hurt. Next week we start another group project. I'm excited to get to know some of my classmates more.",
+      "entry": "This week we learned a lot! I got the gist of everything at least. Brain hurt. Next week we start another group project. I'm excited to get to know some of my classmates more.",
       "id": 5
     },
     {
       "date": "2020-06-10",
       "concepts": "Group Project 2, More JSON, Click events",
       "mood": "💪 Accomplished",
-      "entry": "This week we have another group project. My group seems really smart. The project involves lots of fetching data from different APIs. I think I'm getting it! Or at least I feel like I know a lot more than I did about it last week. I also got a toggle button to work on the first try. That was a great feeling.",
+      "entry": "This week we have another group project. My groupmates seem really smart. The project involves lots of fetching data from different APIs. At the very least, I feel like I know more about it than last week. I also got a toggle button to work on the first try. That was a good feeling.",
       "id": 6
     },
     {
