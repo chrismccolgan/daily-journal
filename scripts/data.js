@@ -16,12 +16,12 @@ const API = {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(newEntryObject)
-        }).then(response => response.json())
+        })
     },
     deleteJournalEntry: (id) => {
         return fetch(`${url}/entries/${id}`, {
             method: "DELETE",
-        }).then(response => response.json())
+        })
     },
     editJournalEntry: (id, editEntryObject) => {
         return fetch(`${url}/entries/${id}`, {
