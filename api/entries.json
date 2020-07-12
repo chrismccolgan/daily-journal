@@ -1,53 +1,86 @@
 {
   "entries": [
     {
-      "date": "2020-05-22",
-      "concepts": "First Week Completed",
-      "mood": "💪 Accomplished",
-      "entry": "We just finished our first week of class. I was nervous at first about doing it all remotely, but I love it. No traffic!",
-      "id": 1
-    },
-    {
       "date": "2020-05-28",
       "concepts": "Group Project, Git",
-      "mood": "😀 Happy",
+      "moodId": "1",
       "entry": "Today my group presented the website we were working on. My group was awesome. I learned a lot about Git with this project.",
       "id": 2
     },
     {
       "date": "2020-06-01",
       "concepts": "Flexbox, Modular Design",
-      "mood": "😀 Happy",
+      "moodId": "1",
       "entry": "Today we designed a basic site using Flexbox and modular design.",
       "id": 3
     },
     {
       "date": "2020-06-02",
       "concepts": "Automating Site Content with JavaScript",
-      "mood": "😁 Excited",
+      "moodId": "5",
       "entry": "Today we learned the basics of how to automate site content generation with Javascript instead of hardcoding it in HTML. I am excited to learn more about this!",
       "id": 4
     },
     {
       "date": "2020-06-05",
       "concepts": "Third Week Completed: JSON, Generating content from javascript, Postman",
-      "mood": "💀 Burned out",
+      "moodId": "6",
       "entry": "This week we learned a lot! I got the gist of everything at least. Brain hurt. Next week we start another group project. I'm excited to get to know some of my classmates more.",
       "id": 5
     },
     {
       "date": "2020-06-10",
       "concepts": "Group Project 2, More JSON, Click events",
-      "mood": "💪 Accomplished",
-      "entry": "This week we have another group project. My groupmates seem really smart. The project involves lots of fetching data from different APIs. At the very least, I feel like I know more about it than last week. I also got a toggle button to work on the first try. That was a good feeling.",
+      "moodId": "4",
+      "entry": "This week we have another group project. My groupmates seem really smart. The project involves lots of fetching data from different databases with APIs. At the very least, I feel like I know more about it than last week. I also got a toggle button to work on the first try. That was a good feeling.",
       "id": 6
     },
     {
       "date": "2020-06-19",
       "concepts": "Fetching, Posting, and Deleting from JSON with Event Listeners",
-      "mood": "😁 Excited",
+      "moodId": "5",
       "entry": "Added post and delete functionality to my journal! Figured out how to position the delete button to the top right of its parent .div with CSS.",
       "id": 7
+    },
+    {
+      "date": "2020-07-10",
+      "concepts": "Search",
+      "moodId": "4",
+      "entry": "Got the search working",
+      "id": 8
+    },
+    {
+      "date": "2020-07-11",
+      "concepts": "Sort",
+      "moodId": "4",
+      "entry": "Got the journal entries displaying by date in descending order. After the entries get fetched, a .sort() is applied to the date objects in the array.",
+      "id": 9
+    }
+  ],
+  "moods": [
+    {
+      "id": 1,
+      "label": "😀 Happy"
+    },
+    {
+      "id": 2,
+      "label": "😢 Sad"
+    },
+    {
+      "id": 3,
+      "label": "🤬 Frustrated"
+    },
+    {
+      "id": 4,
+      "label": "💪 Accomplished"
+    },
+    {
+      "id": 5,
+      "label": "😁 Excited"
+    },
+    {
+      "id": 6,
+      "label": "💀 Burned out"
     }
   ]
 }

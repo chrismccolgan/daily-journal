@@ -2,8 +2,12 @@ const url = "http://localhost:8088"
 
 const API = {
     getJournalEntries: () => {
-        return fetch(`${url}/entries`)
+        return fetch(`${url}/entries?_expand=mood`)
             .then(response => response.json())
+            // This arranges the entries by date in descending order
+            .then(array => array.sort((a, b) => {
+                return new Date(b.date) - new Date(a.date)
+            }))
     },
     getSingleEntry: (id) => {
         return fetch(`${url}/entries/${id}`)
