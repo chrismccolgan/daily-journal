@@ -2,9 +2,15 @@
     font-family: sans-serif;
 }
 
+fieldset {
+    border: 1px black solid;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
 .journal__container {
     border: 1px black solid;
-    margin: 1em 0 1em 0;
+    margin: 1em 0;
     position: relative;
 }
 
