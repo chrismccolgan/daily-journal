@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 namespace DailyJournal.Utils
 {
     /// <summary>
-    ///  A set of useful function for interacting with ADO.NET
+    ///  A set of useful functions for interacting with ADO.NET
     /// </summary>
     public static class DbUtils
     {
