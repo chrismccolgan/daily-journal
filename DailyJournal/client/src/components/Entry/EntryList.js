@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { EntryContext } from '../providers/EntryProvider';
+import { EntryContext } from '../../providers/EntryProvider';
 import Entry from './Entry';
 import EntrySearch from './EntrySearch';
 
