@@ -8,7 +8,7 @@ import {
   FormGroup,
   Label,
 } from 'reactstrap';
-import { EntryContext } from '../providers/EntryProvider';
+import { EntryContext } from '../../providers/EntryProvider';
 
 const EntrySearch = () => {
   const { searchEntries } = useContext(EntryContext);
@@ -29,7 +29,9 @@ const EntrySearch = () => {
                 />
               </FormGroup>
             </Form>
-            <Button color='info' onClick={() => searchEntries(criterion)}>Search</Button>
+            <Button color='info' onClick={() => searchEntries(criterion)}>
+              Search
+            </Button>
           </CardBody>
         </Card>
       </div>
