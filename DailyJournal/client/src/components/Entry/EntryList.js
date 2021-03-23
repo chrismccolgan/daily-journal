@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { EntryContext } from '../../providers/EntryProvider';
+import { EntryContext } from './EntryProvider';
 import Entry from './Entry';
 import EntrySearch from './EntrySearch';
 
@@ -7,7 +7,8 @@ const EntryList = () => {
   const { entries, getAllEntries } = useContext(EntryContext);
 
   useEffect(() => {
-    getAllEntries(); // eslint-disable-next-line
+    getAllEntries();
+  // eslint-disable-next-line
   }, []);
 
   return (

@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import { EntryProvider } from './providers/EntryProvider';
+import { EntryProvider } from './components/Entry/EntryProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import ApplicationViews from './ApplicationViews';
-import { MoodProvider } from './providers/MoodProvider';
+import { MoodProvider } from './components/Mood/MoodProvider';
 
 function App() {
   return (

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace DailyJournal.Models
@@ -22,5 +23,8 @@ namespace DailyJournal.Models
         public int MoodId { get; set; }
 
         public Mood Mood { get; set; }
+
+        public string Image { get; set; }
+        public IFormFile FormFile { get; set; }
     }
 }

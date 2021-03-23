@@ -9,8 +9,8 @@ import {
   Button,
 } from 'reactstrap';
 import { useHistory, useParams } from 'react-router-dom';
-import { EntryContext } from '../../providers/EntryProvider';
-import { MoodContext } from '../../providers/MoodProvider';
+import { EntryContext } from './EntryProvider';
+import { MoodContext } from '../Mood/MoodProvider';
 
 const EntryForm = () => {
   const { addEntry, getEntry, updateEntry } = useContext(EntryContext);
@@ -27,7 +27,11 @@ const EntryForm = () => {
   const handleInputChange = (event) => {
     // When changing a state object or array, always create a copy to make changes, and then set state
     const newEntry = { ...entry };
-    newEntry[event.target.name] = event.target.value;
+    if (event.target.name === 'moodId' || event.target.name === 'id') {
+      newEntry[event.target.name] = parseInt(event.target.value);
+    } else {
+      newEntry[event.target.name] = event.target.value;
+    }
     setEntry(newEntry);
   };
   
@@ -43,12 +47,7 @@ const EntryForm = () => {
         journalEntry: entry.journalEntry,
       }).then(() => history.push('/'));
     } else {
-      addEntry({
-        title: entry.title,
-        date: entry.date,
-        moodId: parseInt(entry.moodId),
-        journalEntry: entry.journalEntry,
-      }).then(() => history.push('/'));
+      addEntry(entry).then(() => history.push('/'));
     }
   };
 
@@ -58,7 +57,8 @@ const EntryForm = () => {
         getEntry(entryId).then(setEntry);
       }
     });
-    setIsLoading(false); // eslint-disable-next-line
+    setIsLoading(false);
+  // eslint-disable-next-line
   }, []);
 
   return (

@@ -8,7 +8,7 @@ import {
   Button,
 } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import { EntryContext } from '../../providers/EntryProvider';
+import { EntryContext } from './EntryProvider';
 
 const Entry = ({ entry }) => {
   const history = useHistory();

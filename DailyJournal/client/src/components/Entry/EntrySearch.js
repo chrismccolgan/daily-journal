@@ -8,7 +8,7 @@ import {
   FormGroup,
   Label,
 } from 'reactstrap';
-import { EntryContext } from '../../providers/EntryProvider';
+import { EntryContext } from './EntryProvider';
 
 const EntrySearch = () => {
   const { searchEntries } = useContext(EntryContext);
