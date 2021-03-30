@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import { EntryProvider } from './components/Entry/EntryProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import ApplicationViews from './ApplicationViews';
+import { EntryProvider } from './components/Entry/EntryProvider';
 import { MoodProvider } from './components/Mood/MoodProvider';
 
 function App() {
