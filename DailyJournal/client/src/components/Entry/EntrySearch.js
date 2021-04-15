@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import {
-  Form,
-  Input,
   Button,
   Card,
   CardBody,
+  Form,
   FormGroup,
+  Input,
   Label,
 } from 'reactstrap';
-import { EntryContext } from '../../providers/EntryProvider';
+import { EntryContext } from './EntryProvider';
 
 const EntrySearch = () => {
   const { searchEntries } = useContext(EntryContext);

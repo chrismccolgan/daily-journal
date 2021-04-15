@@ -79,7 +79,7 @@ namespace DailyJournal.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = $"{EntryQuery} AND e.Id = @Id {SortByDate}";
+                    cmd.CommandText = $"{EntryQuery} AND e.Id = @Id";
                     DbUtils.AddParameter(cmd, "@Id", id);
                     var reader = cmd.ExecuteReader();
                     Entry entry = null;
