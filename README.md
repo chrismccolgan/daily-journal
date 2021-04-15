@@ -10,6 +10,8 @@ _A journal app incorporating the technologies I've learned along my coding journ
 - Backend coded with .NET and C#
 - Full CRUD functionality
 
+# History
+
 ## March 2021
 
 DailyJournal is now a fullstack app! The backend is coded with .NET, database with SQL, and frontend with React & React-Bootstrap.
@@ -24,6 +26,6 @@ Currently I am in the process of converting this journal into a fullstack applic
 
 ## July 2020
 
-A daily journal made with the concepts learned in class
+A daily journal made with the concepts learned in class.
 
 Concepts include: HTML, CSS, JavaScript, JSON, modular code, CRUD functionality, array methods, object methods
