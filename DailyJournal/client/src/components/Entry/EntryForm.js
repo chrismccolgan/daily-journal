@@ -39,13 +39,7 @@ const EntryForm = () => {
     setIsLoading(true);
     // If entry already has an Id, then we are editing an entry
     if (entryId) {
-      updateEntry({
-        id: parseInt(entry.id),
-        title: entry.title,
-        date: entry.date,
-        moodId: parseInt(entry.moodId),
-        journalEntry: entry.journalEntry,
-      }).then(() => history.push('/'));
+      updateEntry(entry).then(() => history.push('/'));
     } else {
       addEntry(entry).then(() => history.push('/'));
     }

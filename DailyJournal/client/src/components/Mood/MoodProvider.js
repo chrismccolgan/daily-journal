@@ -6,7 +6,7 @@ export const MoodProvider = (props) => {
   const [moods, setMoods] = useState([]);
 
   const getAllMoods = () => {
-    return fetch('/api/mood')
+    return fetch('/api/Mood')
       .then((res) => res.json())
       .then(setMoods);
   };

@@ -8,7 +8,7 @@ const EntryList = () => {
 
   useEffect(() => {
     getAllEntries();
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   return (
