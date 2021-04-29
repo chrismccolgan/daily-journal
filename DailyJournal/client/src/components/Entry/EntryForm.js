@@ -16,7 +16,7 @@ const EntryForm = () => {
   const { addEntry, getEntry, updateEntry } = useContext(EntryContext);
   const { moods, getAllMoods } = useContext(MoodContext);
 
-  const [entry, setEntry] = useState('');
+  const [entry, setEntry] = useState({});
   // Disables the submit button
   const [isLoading, setIsLoading] = useState(true);
 
@@ -35,7 +35,8 @@ const EntryForm = () => {
     setEntry(newEntry);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setIsLoading(true);
     // If entry already has an Id, then we are editing an entry
     if (entryId) {
@@ -110,14 +111,7 @@ const EntryForm = () => {
                 />
               </FormGroup>
             </Form>
-            <Button
-              color='info'
-              disabled={isLoading}
-              onClick={(event) => {
-                event.preventDefault();
-                handleSubmit();
-              }}
-            >
+            <Button color='info' disabled={isLoading} onClick={handleSubmit}>
               Submit
             </Button>
           </CardBody>
