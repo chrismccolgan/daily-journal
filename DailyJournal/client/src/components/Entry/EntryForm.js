@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useReducer } from 'react';
 import {
   Button,
   Card,
@@ -12,11 +12,33 @@ import { useHistory, useParams } from 'react-router-dom';
 import { EntryContext } from './EntryProvider';
 import { MoodContext } from '../Mood/MoodProvider';
 
+const initialFormState = {
+  title: '',
+  date: '',
+  moodId: '',
+  journalEntry: '',
+};
+
+const formReducer = (state, action) => {
+  if (action.type === 'INPUT') {
+    return {
+      ...state,
+      [action.field]:
+        action.field === 'moodId' ? parseInt(action.payload) : action.payload,
+    };
+  }
+  if (action.type === 'EDIT') {
+    return { ...action.payload };
+  }
+  return state;
+};
+
 const EntryForm = () => {
   const { addEntry, getEntry, updateEntry } = useContext(EntryContext);
   const { moods, getAllMoods } = useContext(MoodContext);
 
-  const [entry, setEntry] = useState({});
+  const [formState, dispatch] = useReducer(formReducer, initialFormState);
+
   // Disables the submit button
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,14 +47,11 @@ const EntryForm = () => {
   const history = useHistory();
 
   const handleInputChange = (event) => {
-    // When changing a state object or array, always create a copy to make changes, and then set state
-    const newEntry = { ...entry };
-    if (event.target.name === 'moodId' || event.target.name === 'id') {
-      newEntry[event.target.name] = parseInt(event.target.value);
-    } else {
-      newEntry[event.target.name] = event.target.value;
-    }
-    setEntry(newEntry);
+    dispatch({
+      type: 'INPUT',
+      field: event.target.name,
+      payload: event.target.value,
+    });
   };
 
   const handleSubmit = (event) => {
@@ -40,9 +59,9 @@ const EntryForm = () => {
     setIsLoading(true);
     // If entry already has an Id, then we are editing an entry
     if (entryId) {
-      updateEntry(entry).then(() => history.push('/'));
+      updateEntry(formState).then(() => history.push('/'));
     } else {
-      addEntry(entry).then(() => history.push('/'));
+      addEntry(formState).then(() => history.push('/'));
     }
     setIsLoading(false);
   };
@@ -51,7 +70,9 @@ const EntryForm = () => {
     setIsLoading(true);
     getAllMoods().then(() => {
       if (entryId) {
-        getEntry(entryId).then((data) => setEntry(data));
+        getEntry(entryId).then((data) =>
+          dispatch({ type: 'EDIT', payload: data })
+        );
       }
     });
     setIsLoading(false);
@@ -70,7 +91,7 @@ const EntryForm = () => {
                   id='title'
                   name='title'
                   type='text'
-                  defaultValue={entry.title}
+                  defaultValue={formState.title}
                   onChange={handleInputChange}
                 />
               </FormGroup>
@@ -80,7 +101,7 @@ const EntryForm = () => {
                   id='date'
                   name='date'
                   type='date'
-                  defaultValue={entry.date && entry.date.split('T')[0]}
+                  defaultValue={formState.date && formState.date.split('T')[0]}
                   onChange={handleInputChange}
                 />
               </FormGroup>
@@ -89,7 +110,7 @@ const EntryForm = () => {
                 <select
                   id='moodId'
                   name='moodId'
-                  value={entry.moodId}
+                  value={formState.moodId}
                   onChange={handleInputChange}
                   className='form-control'
                 >
@@ -107,7 +128,7 @@ const EntryForm = () => {
                   id='journalEntry'
                   name='journalEntry'
                   type='textarea'
-                  defaultValue={entry.journalEntry}
+                  defaultValue={formState.journalEntry}
                   onChange={handleInputChange}
                   rows={4}
                 />
