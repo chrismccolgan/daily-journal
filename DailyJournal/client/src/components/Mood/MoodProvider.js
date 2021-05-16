@@ -7,8 +7,8 @@ export const MoodProvider = (props) => {
 
   const getAllMoods = () => {
     return fetch('/api/Mood')
-      .then((res) => res.json())
-      .then(setMoods);
+      .then((response) => response.json())
+      .then((data) => setMoods(data));
   };
 
   return (

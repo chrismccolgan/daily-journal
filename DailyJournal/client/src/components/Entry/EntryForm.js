@@ -18,7 +18,7 @@ const EntryForm = () => {
 
   const [entry, setEntry] = useState({});
   // Disables the submit button
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Grabs the parameter passed on the URL
   const { entryId } = useParams();
@@ -44,12 +44,14 @@ const EntryForm = () => {
     } else {
       addEntry(entry).then(() => history.push('/'));
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
+    setIsLoading(true);
     getAllMoods().then(() => {
       if (entryId) {
-        getEntry(entryId).then(setEntry);
+        getEntry(entryId).then((data) => setEntry(data));
       }
     });
     setIsLoading(false);

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 
+const apiUrl = '/api/Entry';
+
 export const EntryContext = React.createContext();
 
 export const EntryProvider = (props) => {
-  const apiUrl = '/api/Entry';
-
   const [entries, setEntries] = useState([]);
 
   const getAllEntries = () => {
     return fetch(apiUrl)
-      .then((res) => res.json())
-      .then(setEntries);
+      .then((response) => response.json())
+      .then((data) => setEntries(data));
   };
 
   const getEntry = (id) => {
-    return fetch(`${apiUrl}/${id}`).then((resp) => resp.json());
+    return fetch(`${apiUrl}/${id}`).then((response) => response.json());
   };
 
   const addEntry = (entry) => {
@@ -34,19 +34,19 @@ export const EntryProvider = (props) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(entry),
-    }).then(getAllEntries);
+    });
   };
 
   const deleteEntry = (id) => {
     return fetch(`${apiUrl}/${id}`, {
       method: 'DELETE',
-    }).then(getAllEntries);
+    }).then(() => getAllEntries());
   };
 
   const searchEntries = (criterion) => {
-    fetch(`${apiUrl}/search?q=${criterion}`)
-      .then((resp) => resp.json())
-      .then(setEntries);
+    return fetch(`${apiUrl}/search?q=${criterion}`)
+      .then((response) => response.json())
+      .then((data) => setEntries(data));
   };
 
   return (

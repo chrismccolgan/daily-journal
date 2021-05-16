@@ -14,11 +14,9 @@ const EntryList = () => {
   return (
     <>
       <EntrySearch />
-      <div>
-        {entries.map((entry) => (
-          <Entry key={entry.id} entry={entry} />
-        ))}
-      </div>
+      {entries.map((entry) => (
+        <Entry key={entry.id} entry={entry} />
+      ))}
     </>
   );
 };
