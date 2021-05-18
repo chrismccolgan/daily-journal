@@ -14,9 +14,9 @@ _A journal app incorporating the technologies I've learned along my coding journ
 
 ## May 2021
 
-<img src="./DailyJournal/client/public/validation.png" width=50% height=50%>
+<img src="./DailyJournal/client/public/validation.png" width=25% height=25%>
 
-DailyJournal now has client side validation for its form! I also refactored the code to use the useReducer hook instead of useState for the form data. The client side validation works by checking if the user has clicked away from the input field and if the code is invalid. If those two conditions are met, then a little red validation message pops up under the input. I feel more comfortable working with the useReducer hook now.
+DailyJournal now has client side validation for its form! I also refactored the code to use the useReducer hook instead of useState for the form data. The client side validation works by checking if the user has clicked away from the input field and if the input value is invalid. If those two conditions are met, then a little red validation message pops up under the input. I feel more comfortable working with the useReducer hook now.
 
 ## March 2021
 
