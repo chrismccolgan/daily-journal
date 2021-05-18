@@ -13,8 +13,8 @@ _A journal app incorporating the technologies I've learned along my coding journ
 
 ## Screenshots
 
-<img src="./DailyJournal/client/public/validation.png" width=50% height=50%>
-<img src="./DailyJournal/client/public/validation.png" width=50% height=50%>
+<img src="./DailyJournal/client/public/screenshot1.png" width=50% height=50%>
+<img src="./DailyJournal/client/public/screenshot2.png" width=50% height=50%>
 
 # History
 
