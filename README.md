@@ -8,7 +8,13 @@ _A journal app incorporating the technologies I've learned along my coding journ
 - Frontend coded with React and JavaScript
   - Use of React Framework React-Bootstrap for styling
 - Backend coded with .NET and C#
+- SQL database
 - Full CRUD functionality
+
+## Screenshots
+
+<img src="./DailyJournal/client/public/validation.png" width=50% height=50%>
+<img src="./DailyJournal/client/public/validation.png" width=50% height=50%>
 
 # History
 
