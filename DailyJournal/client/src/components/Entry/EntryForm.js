@@ -52,11 +52,13 @@ const EntryForm = () => {
         },
       };
     } else if (action.type === 'SUBMIT') {
-      state.title.isTouched = true;
-      state.date.isTouched = true;
-      state.moodId.isTouched = true;
-      state.journalEntry.isTouched = true;
-      return { ...state };
+      return {
+        ...state,
+        title: { ...state.title, isTouched: true },
+        date: { ...state.date, isTouched: true },
+        moodId: { ...state.moodId, isTouched: true },
+        journalEntry: { ...state.journalEntry, isTouched: true },
+      };
     } else {
       return;
     }
