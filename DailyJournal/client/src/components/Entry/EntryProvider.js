@@ -6,66 +6,25 @@ export const EntryContext = React.createContext();
 
 export const EntryProvider = (props) => {
   const [entries, setEntries] = useState([]);
-  const [notification, setNotification] = useState(null);
 
-  const getAllEntries = async () => {
-    setNotification(null);
-    const fetchData = async () => {
-      const response = await fetch(apiUrl);
-      if (!response.ok) {
-        console.log(response);
-        throw new Error('Could not fetch entries');
-      }
-      const data = await response.json();
-      return data;
-    };
-
-    try {
-      const entryData = await fetchData();
-      setEntries(entryData);
-    } catch (error) {
-      setNotification({
-        status: 'error',
-        title: 'Error!',
-        message: error.message,
-      });
-    }
+  const getAllEntries = () => {
+    return fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setEntries(data));
   };
-
-  // const getAllEntries = () => {
-  //   return fetch(apiUrl)
-  //     .then((response) => response.json())
-  //     .then((data) => setEntries(data));
-  // };
 
   const getEntry = (id) => {
     return fetch(`${apiUrl}/${id}`).then((response) => response.json());
   };
 
-  const addEntry = async (entry) => {
-    setNotification(null);
-    const sendData = async () => {
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(entry),
-      });
-      if (!response.ok) {
-        throw new Error('Adding journal entry failed');
-      }
-    };
-
-    try {
-      await sendData();
-    } catch (error) {
-      setNotification({
-        status: 'error',
-        title: 'Error!',
-        message: error.message,
-      });
-    }
+  const addEntry = (entry) => {
+    return fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(entry),
+    });
   };
 
   const updateEntry = (entry) => {
@@ -100,7 +59,6 @@ export const EntryProvider = (props) => {
         updateEntry,
         deleteEntry,
         searchEntries,
-        notification,
       }}
     >
       {props.children}
