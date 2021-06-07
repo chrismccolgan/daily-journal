@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import { EntryContext } from './EntryProvider';
 import Entry from './Entry';
 import EntrySearch from './EntrySearch';
+import Notification from '../UI/Notification';
 
 const EntryList = () => {
-  const { entries, getAllEntries } = useContext(EntryContext);
+  const { entries, getAllEntries, notification } = useContext(EntryContext);
 
   useEffect(() => {
     getAllEntries();
@@ -13,6 +14,7 @@ const EntryList = () => {
 
   return (
     <>
+      {notification && <Notification notification={notification} />}
       <EntrySearch />
       {entries.map((entry) => (
         <Entry key={entry.id} entry={entry} />
