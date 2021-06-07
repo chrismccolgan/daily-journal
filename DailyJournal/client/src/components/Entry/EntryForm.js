@@ -12,59 +12,13 @@ import {
 import { useHistory, useParams } from 'react-router-dom';
 import { EntryContext } from './EntryProvider';
 import { MoodContext } from '../Mood/MoodProvider';
+import { entryFormReducer, initialState } from './entryFormReducer';
 
 const EntryForm = () => {
   const { addEntry, getEntry, updateEntry } = useContext(EntryContext);
   const { moods, getAllMoods } = useContext(MoodContext);
 
-  const initialFormState = {
-    id: '',
-    title: { value: '', isTouched: false, isValid: false },
-    date: { value: '', isTouched: false, isValid: false },
-    moodId: { value: '', isTouched: false, isValid: false },
-    journalEntry: { value: '', isTouched: false, isValid: false },
-  };
-
-  const formReducer = (state, action) => {
-    const updatedElement = { ...state[action.field] };
-    if (action.type === 'INPUT') {
-      updatedElement.value = action.payload;
-      return { ...state, [action.field]: updatedElement };
-    } else if (action.type === 'BLUR') {
-      const isNotEmpty = (value) => value.trim() !== '';
-      updatedElement.isTouched = true;
-      updatedElement.isValid = isNotEmpty(action.payload);
-      return { ...state, [action.field]: updatedElement };
-    } else if (action.type === 'EDIT') {
-      return {
-        id: action.payload.id,
-        title: { value: action.payload.title, isTouched: false, isValid: true },
-        date: { value: action.payload.date, isTouched: false, isValid: true },
-        moodId: {
-          value: action.payload.moodId,
-          isTouched: false,
-          isValid: true,
-        },
-        journalEntry: {
-          value: action.payload.journalEntry,
-          isTouched: false,
-          isValid: true,
-        },
-      };
-    } else if (action.type === 'SUBMIT') {
-      return {
-        ...state,
-        title: { ...state.title, isTouched: true },
-        date: { ...state.date, isTouched: true },
-        moodId: { ...state.moodId, isTouched: true },
-        journalEntry: { ...state.journalEntry, isTouched: true },
-      };
-    } else {
-      return;
-    }
-  };
-
-  const [formState, dispatch] = useReducer(formReducer, initialFormState);
+  const [formState, dispatch] = useReducer(entryFormReducer, initialState);
 
   // Disables the submit button
   const [isLoading, setIsLoading] = useState(false);
@@ -92,7 +46,6 @@ const EntryForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-
     dispatch({ type: 'SUBMIT' });
 
     if (
@@ -114,12 +67,13 @@ const EntryForm = () => {
 
     // If entry already has an Id, then we are editing an entry
     if (entryId) {
-      updateEntry({ ...json, id: formState.id }).then(() => history.push('/'));
+      updateEntry({ ...json, id: formState.id });
     } else {
-      addEntry(json).then(() => history.push('/'));
+      addEntry(json);
     }
 
     setIsLoading(false);
+    history.push('/');
   };
 
   useEffect(() => {

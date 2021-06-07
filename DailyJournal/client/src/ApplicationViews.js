@@ -1,8 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import EntryForm from './components/Entry/EntryForm';
-// import EntryForm from './components/Entry/EntryFormOld';
-// import EntryForm from './components/Entry/EntryFormAlt';
 import EntryList from './components/Entry/EntryList';
 
 const ApplicationViews = () => {
