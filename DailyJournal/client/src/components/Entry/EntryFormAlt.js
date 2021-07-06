@@ -56,13 +56,11 @@ const EntryForm = () => {
   };
 
   useEffect(() => {
-    dispatch({ isLoading: true });
     getAllMoods().then(() => {
       if (entryId) {
         getEntry(entryId).then((data) => dispatch(data));
       }
     });
-    dispatch({ isLoading: false });
     // eslint-disable-next-line
   }, []);
 

@@ -1,33 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 
 const apiUrl = '/api/Entry';
 
 export const EntryContext = React.createContext();
 
+const entryProviderReducer = (state, action) => {
+  if (action.type === 'SEND') {
+    return {
+      data: null,
+      error: null,
+      status: 'pending',
+    };
+  }
+
+  if (action.type === 'SUCCESS') {
+    return {
+      data: action.responseData,
+      error: null,
+      status: 'completed',
+    };
+  }
+
+  if (action.type === 'ERROR') {
+    return {
+      data: null,
+      error: action.errorMessage,
+      status: 'completed',
+    };
+  }
+
+  return state;
+};
+
 export const EntryProvider = (props) => {
   const [entries, setEntries] = useState([]);
   const [notification, setNotification] = useState(null);
+  const [entryState, dispatch] = useReducer(entryProviderReducer, {
+    status: null,
+    data: null,
+    error: null,
+  });
 
   const getAllEntries = async () => {
-    setNotification(null);
+    dispatch({ type: 'SEND' });
+
     const fetchData = async () => {
       const response = await fetch(apiUrl);
       if (!response.ok) {
         console.log(response);
-        throw new Error('Could not fetch entries');
+        throw new Error(response.message || 'Could not fetch entries');
       }
       const data = await response.json();
       return data;
     };
 
     try {
-      const entryData = await fetchData();
-      setEntries(entryData);
+      const responseData = await fetchData();
+      dispatch({ type: 'SUCCESS', responseData });
     } catch (error) {
-      setNotification({
-        status: 'error',
-        title: 'Error!',
-        message: error.message,
+      dispatch({
+        type: 'ERROR',
+        errorMessage: error.message || 'Something went wrong!',
       });
     }
   };
@@ -101,6 +134,7 @@ export const EntryProvider = (props) => {
         deleteEntry,
         searchEntries,
         notification,
+        entryState,
       }}
     >
       {props.children}

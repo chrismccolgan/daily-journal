@@ -3,22 +3,31 @@ import { EntryContext } from './EntryProvider';
 import Entry from './Entry';
 import EntrySearch from './EntrySearch';
 import Notification from '../UI/Notification';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 const EntryList = () => {
-  const { entries, getAllEntries, notification } = useContext(EntryContext);
+  const { getAllEntries, entryState } = useContext(EntryContext);
 
   useEffect(() => {
     getAllEntries();
     // eslint-disable-next-line
   }, []);
 
+  if (!entryState.status || entryState.status === 'pending') {
+    return (
+      <div className='centered'>
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  console.log(entryState);
   return (
     <>
-      {notification && <Notification notification={notification} />}
+      {entryState.error && <Notification error={entryState.error} />}
       <EntrySearch />
-      {entries.map((entry) => (
-        <Entry key={entry.id} entry={entry} />
-      ))}
+      {entryState.data &&
+        entryState.data.map((entry) => <Entry key={entry.id} entry={entry} />)}
     </>
   );
 };
