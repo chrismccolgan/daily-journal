@@ -1,4 +1,10 @@
 import { useReducer, useCallback } from 'react';
+import {
+  getAllEntries,
+  getEntry,
+  addEntry,
+  updateEntry,
+} from '../components/Entry/EntryApi';
 
 const reducer = (state, action) => {
   if (action.type === 'SEND') {
@@ -35,22 +41,26 @@ const useHttp = (startWithPending = false) => {
     error: null,
   });
 
-  const sendRequest = useCallback(async (requestFunction, requestData) => {
+  const sendRequest = async (requestFunction, requestData) => {
     dispatch({ type: 'SEND' });
     try {
       const responseData = await requestFunction(requestData);
       dispatch({ type: 'SUCCESS', responseData });
+      return await responseData;
     } catch (error) {
       dispatch({
         type: 'ERROR',
         errorMessage: error.message || 'Something went wrong!',
       });
     }
-  }, []);
+  };
 
   return {
-    sendRequest,
     ...state,
+    getAllEntries: () => sendRequest(getAllEntries),
+    getEntry: (requestData) => sendRequest(getEntry, requestData),
+    addEntry: (requestData) => sendRequest(addEntry, requestData),
+    updateEntry: (requestData) => sendRequest(updateEntry, requestData),
   };
 };
 

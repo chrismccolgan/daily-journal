@@ -4,16 +4,18 @@ import Entry from './Entry';
 import EntrySearch from './EntrySearch';
 import Notification from '../UI/Notification';
 import LoadingSpinner from '../UI/LoadingSpinner';
+import useHttp from '../../hooks/useHttp';
 
 const EntryList = () => {
-  const { getAllEntries, entryState } = useContext(EntryContext);
+  // const { getAllEntries, entryState } = useContext(EntryContext);
+  const { getAllEntries, data, error, status } = useHttp(true);
 
   useEffect(() => {
     getAllEntries();
     // eslint-disable-next-line
   }, []);
 
-  if (!entryState.status || entryState.status === 'pending') {
+  if (status === 'pending') {
     return (
       <div className='centered'>
         <LoadingSpinner />
@@ -21,13 +23,11 @@ const EntryList = () => {
     );
   }
 
-  console.log(entryState);
   return (
     <>
-      {entryState.error && <Notification error={entryState.error} />}
+      {error && <Notification error={error} />}
       <EntrySearch />
-      {entryState.data &&
-        entryState.data.map((entry) => <Entry key={entry.id} entry={entry} />)}
+      {data && data.map((entry) => <Entry key={entry.id} entry={entry} />)}
     </>
   );
 };

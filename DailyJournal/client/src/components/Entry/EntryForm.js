@@ -10,14 +10,15 @@ import {
   Label,
 } from 'reactstrap';
 import { useHistory, useParams } from 'react-router-dom';
-import { EntryContext } from './EntryProvider';
+// import { EntryContext } from './EntryProvider';
 import { MoodContext } from '../Mood/MoodProvider';
 import Notification from '../UI/Notification';
 import { entryFormReducer, initialState } from './entryFormReducer';
+import useHttp from '../../hooks/useHttp';
 
 const EntryForm = () => {
-  const { addEntry, getEntry, updateEntry, notification } =
-    useContext(EntryContext);
+  // const { addEntry, getEntry, updateEntry, notification } =
+  //   useContext(EntryContext);
   const { moods, getAllMoods } = useContext(MoodContext);
 
   const [formState, dispatch] = useReducer(entryFormReducer, initialState);
@@ -28,6 +29,9 @@ const EntryForm = () => {
   // Grabs the parameter passed on the URL
   const { entryId } = useParams();
   const history = useHistory();
+
+  const { getEntry, updateEntry, addEntry, data, error, status } =
+    useHttp(true);
 
   const handleInputChange = (event) => {
     dispatch({
@@ -77,9 +81,9 @@ const EntryForm = () => {
 
     setIsLoading(false);
 
-    if (notification) {
-      return;
-    }
+    // if (notification) {
+    //   return;
+    // }
 
     history.push('/');
   };
@@ -99,7 +103,6 @@ const EntryForm = () => {
 
   return (
     <>
-      {notification && <Notification notification={notification} />}
       <div className='container pt-4'>
         <div className='row justify-content-center'>
           <Card className='col-sm-12 col-lg-6'>
